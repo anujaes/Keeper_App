@@ -1,0 +1,15 @@
+.small-btn{
+    padding:5px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.btn-edit:hover{
+    color: blue;
+    border-bottom: 3px solid blue;
+}
+
+.btn-delete:hover{
+    color: red;
+    border-bottom: 3px solid red;
+}

@@ -4,12 +4,10 @@ const noteReducers = (state = initialData, action) => {
 
     switch(action.type) {
         case 'ADD_NOTE':
-            return [...state, action.data]
-            return state;
+            return [...state, action.payload]
 
         case 'REMOVE_NOTE':
-            const idToRemove = action.data;
-            const temp = state.filter((item) => item.id !== idToRemove);
+            const temp = state.filter( (item) => item.createdAt !== action.payload);
             return [...temp];
 
         case 'UPDATE_NOTE':

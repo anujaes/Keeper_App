@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import { PlusCircleFill } from "react-bootstrap-icons";
+import { PlusCircleFill,JournalText } from "react-bootstrap-icons";
 // eslint-disable-next-line
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/navigationBar.css'
@@ -19,11 +19,11 @@ function NavigationBar() {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
                 <Container>
-                    <Navbar.Brand className="brand-name" href="#home">Keeper-App</Navbar.Brand>
+                    <Navbar.Brand className="brand-name"><JournalText className="brand-logo"/> Keeper-App</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
+                    <Navbar.Collapse id="responsive-navbar-nav" className="menuItem">
                         <Nav className="ms-auto">
                             <Button variant="warning" onClick={handleShow} ><PlusCircleFill />&nbsp;&nbsp;Note</Button>
                         </Nav>

@@ -2,27 +2,62 @@
     font-weight     : bold;
     letter-spacing  : 2px;
     text-transform  : uppercase;
-    color           : #ffc107;
+    /* color           : #ffc107; */
+    color           : darkslateblue;
 }
 
 .brand-name:hover{
-    color: whitesmoke;
+    /* color: whitesmoke; */
+    color: rgba(0,0,155,0.9);
     transition: ease-in-out 200ms;
     cursor: pointer;
 }
 
 .brand-logo{
     font-size       : 2rem;
-    color           : whitesmoke;
+    color           : darkslateblue;
     font-weight     : bold;
 }
 
 .navbar{
-    background-color: #050544 !important;
+    /* background-color: #dde1e7 !important; */
+    background-color:#abcdff80 !important;
+    box-shadow: 0px 3px 5px rgba(94, 104, 121, 0.945) !important;
+}
+
+.navbar-btn{
+    border:none;
+    outline: none !important;
+    background-color: #dde1e7;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: -3px -3px 7px #ffffffb2, 3px 3px 5px rgba(94, 104, 121, 0.945) !important; */
+    box-shadow: -3px -3px 7px #0000002e, 3px 3px 5px rgba(94, 104, 121, 0.945) !important;
+
+}
+
+.navbar-btn:focus:not(:focus-visible) {
+    box-shadow:inset -3px -3px 7px #ffffffb2, inset 3px 3px 5px rgba(94, 104, 121, 0.945) !important;
 }
 
 @media only screen and (max-width: 992px) {
     .menuItem{
         margin-top: 10px !important;
     }
+}
+
+.navbar-toggler{
+    /* background-color: antiquewhite !important; */
+    /* #0000002e */
+    box-shadow: -3px -3px 7px #0000002e, 3px 3px 5px rgba(94, 104, 121, 0.945) !important;
+}
+.navbar-toggler:hover{
+    box-shadow:inset -3px -3px 7px #ffffffb2,
+                inset 3px 3px 5px rgba(94, 104, 121, 0.945) !important;
+}
+
+.navbar-toggler-icon{
+    /* background-color: #dde1e7; */
 }

@@ -1,15 +1,55 @@
 .small-btn{
     padding:5px;
-    margin: 2px;
+    margin: 4px;
+    border-radius: 4px;
     cursor: pointer;
+    background-color:#dde1e7;
+    box-shadow: -3px 7px #ffffffb2,
+                3px 3px 5px rgba(94, 104, 121, 0.945) !important;
 }
 
 .btn-edit:hover{
     color: blue;
-    border-bottom: 3px solid blue;
+    /* border-bottom: 3px solid blue; */
+    box-shadow:-3px -3px 7px rgba(0,0,255,0.35),
+    3px 3px 5px rgba(21, 0, 254, 0.945) !important;
 }
 
 .btn-delete:hover{
     color: red;
-    border-bottom: 3px solid red;
+    /* border-bottom: 3px solid red; */
+    box-shadow:-3px -3px 7px rgba(254, 0, 0, 0.35),
+    3px 3px 5px red !important;
+}
+
+.card{
+    background-color: #dde1e7 !important;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 7px #ffffffb2,
+                3px 3px 5px rgba(94, 104, 121, 0.945) !important;
+}
+
+.card-header{
+    background-color: transparent;
+    border: none;
+    padding-top: 0 !important;
+    font-weight: 500;
+    color: dimgray;
+}
+
+.card-body{
+    padding: 1.2rem !important;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:inset -3px -3px 7px #ffffffb2,
+                inset 3px 3px 5px rgba(69, 76, 88, 0.945) !important;
+}
+.card-title{
+    color: dimgray;
+    letter-spacing: 1px;
+}
+.card-text{
+    text-align: justify;
+    color: dimgray;
 }

@@ -25,7 +25,7 @@ function NavigationBar() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav" className="menuItem">
                         <Nav className="ms-auto">
-                            <Button variant="warning" onClick={handleShow} ><PlusCircleFill />&nbsp;&nbsp;Note</Button>
+                            <Button variant="warning" className="navbar-btn" onClick={handleShow} ><PlusCircleFill />&nbsp;&nbsp;Note</Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

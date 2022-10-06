@@ -21,12 +21,16 @@ function Note(props) {
         const handleShow            = () => setShow(true);
 
     function handleEdit(){
-        setOldData({ title : title, content : content, createdAt : createdAt })
-        handleShow()
+        if(confirm("are you sure want edit?")){//eslint-disable-line
+            setOldData({ title : title, content : content, createdAt : createdAt })
+            handleShow()
+        }
     }
 
     function handleDelete() {
-        removeNote(createdAt)
+        if(confirm("are you sure want edit?")){//eslint-disable-line
+            removeNote(createdAt)
+        }
     }
 
     return (

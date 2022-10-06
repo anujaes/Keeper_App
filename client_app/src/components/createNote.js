@@ -2,9 +2,10 @@ import React, { useState, useEffect}    from 'react';
 import { addNote }                      from '../redux/actions';
 import { connect }                      from 'react-redux';
 import { Button, Modal, Form }          from 'react-bootstrap'
+import * as Icon                    from 'react-bootstrap-icons';
 // eslint-disable-next-line
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/navigationBar.css'
+import './css/createNote.css'
 
 function CreatNote(props) {
     const { addNote,
@@ -54,7 +55,7 @@ function CreatNote(props) {
         <>
             <Modal show={visibility} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add new note!</Modal.Title>
+                    <Modal.Title>Create Note!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -80,7 +81,7 @@ function CreatNote(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Form.Text id="txtDate" className='me-auto date-time'>{new Date().toDateString()}</Form.Text>
-                    <Button variant="warning" onClick={handleAddNote} disabled = {btnState}> ADD </Button>
+                    <Button variant="warning" onClick={handleAddNote} disabled = {btnState}> <Icon.Plus width={30} height={30}/> </Button>
                 </Modal.Footer>
             </Modal>
         </>

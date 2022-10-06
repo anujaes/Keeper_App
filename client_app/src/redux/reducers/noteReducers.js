@@ -1,4 +1,4 @@
-const initialData = [ ]
+const initialData = []
 
 const noteReducers = (state = initialData, action) => {
 
@@ -11,7 +11,14 @@ const noteReducers = (state = initialData, action) => {
             return [...temp];
 
         case 'UPDATE_NOTE':
-            return state;
+                state.forEach( (item)=>{
+                    if(item.createdAt == action.payload.id){
+                        item.content    = action.payload.data.content;
+                        item.title      = action.payload.data.title;
+                        item.createdAt  = action.payload.data.createdAt;
+                    }
+                })
+                return [...state];
 
         default:
             return state;

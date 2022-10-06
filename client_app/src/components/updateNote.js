@@ -1,41 +1,38 @@
 import React, { useState, useEffect}    from 'react';
-import { addNote }                      from '../redux/actions';
+import { updateNote }                   from '../redux/actions';
 import { connect }                      from 'react-redux';
 import { Button, Modal, Form }          from 'react-bootstrap'
 // eslint-disable-next-line
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/navigationBar.css'
 
-function CreatNote(props) {
-    const { addNote,
+function UpdateNote(props) {
+    const {
+        updateNote,
         handleShow,
         visibility,
-    }                               = props
-    const [content, setContent]     = useState( { title :'', content : '', createdAt : '' });
-    const [btnState, setBtnState]   = useState(true);
-    const handleClose               = ()=> { handleShow(false); }
+        oldData
+    } = props
+
+    const [data, setData]   = useState ( {...oldData});
+    const [btnState, setBtnState] = useState(true);
+    const handleClose = ()=> {
+        handleShow(false);
+    }
 
     useEffect( () =>{
+
         // to enable disable ADD button
-        if(content.title.length >= 3 && content.content.length >= 5){
+        if(data.title.length >= 3 && data.content.length >= 5){
             setBtnState(false)
         }
         else
             setBtnState(true)
-    },[content])
 
-    useEffect( () =>{
-        // to enable disable ADD button
-        if(content.title.length >= 3 && content.content.length >= 5){
-            setBtnState(false)
-        }
-        else
-            setBtnState(true)
-
-    },[content])
+    },[data])
 
     function handleText(event){
-        setContent( (prev) => {
+        setData( (prev) => {
             return {
                 ...prev,
                 [event.target.name]: event.target.value
@@ -43,24 +40,24 @@ function CreatNote(props) {
         });
     }
 
-    function handleAddNote(){
-        content.createdAt = new Date().toLocaleString();
-        addNote(content)
+    function handleUpdate() {
+        data.createdAt = new Date().toLocaleString();
+        updateNote({data,id:oldData.createdAt})
         handleClose(true)
-        setContent({ title:'', content:'' ,createdAt:'' });
+        setData({ title:'', content:'' ,createdAt:'' });
     }
 
     return (
         <>
             <Modal show={visibility} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add new note!</Modal.Title>
+                    <Modal.Title>Update your note!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Control
                             name            = "title"
-                            value           = {content.title}
+                            value           = {data.title}
                             type            = "text"
                             onChange        = {handleText}
                             placeholder     = "Note subject..."
@@ -70,7 +67,7 @@ function CreatNote(props) {
                             className       = 'mt-2'
                             name            = "content"
                             as              = "textarea"
-                            value           = {content.value}
+                            value           = {data.content}
                             onChange        = {handleText}
                             placeholder     = 'write your notes here'
                             style           = {{ height: "200px", resize: "none" }}
@@ -79,8 +76,8 @@ function CreatNote(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Form.Text id="txtDate" className='me-auto date-time'>{new Date().toDateString()}</Form.Text>
-                    <Button variant="warning" onClick={handleAddNote} disabled = {btnState}> ADD </Button>
+                    <Form.Text id="etxtDate" className='me-auto date-time'>{new Date().toDateString()}</Form.Text>
+                    <Button variant="warning" onClick={handleUpdate} disabled = {btnState}> Update </Button>
                 </Modal.Footer>
             </Modal>
         </>
@@ -93,9 +90,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-        addNote: (data) => dispatch(addNote(data)),
+        updateNote: (datas) => dispatch(updateNote(datas))
+
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatNote);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateNote);
 

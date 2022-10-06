@@ -1,8 +1,9 @@
-import React                        from "react";
+import React,{useState}             from "react";
 import { connect }                  from "react-redux";
 import { Card }                     from "react-bootstrap";
 import * as Icon                    from 'react-bootstrap-icons';
-import { removeNote, updateNote }   from "../redux/actions";
+import UpdateNote                   from "./updateNote";
+import { removeNote }               from "../redux/actions";
 import './css/note.css'
 
 function Note(props) {
@@ -14,14 +15,18 @@ function Note(props) {
         index,
         createdAt,
         removeNote,
-        updateNote } = props;
+    }                = props;
+        const [oldData,setOldData]  = useState({})
+        const [show, setShow]       = useState(false);
+        const handleShow            = () => setShow(true);
 
-    function handleEdit(id){
-        updateNote(id)
+    function handleEdit(){
+        setOldData({ title : title, content : content, createdAt : createdAt })
+        handleShow()
     }
 
-    function handleDelete(id) {
-        removeNote(id)
+    function handleDelete() {
+        removeNote(createdAt)
     }
 
     return (
@@ -34,18 +39,28 @@ function Note(props) {
                     <Card.Title>{title}</Card.Title>
                     <Card.Text> {content} </Card.Text>
                     <p>{createdAt}</p>
-                    <span onClick={ () => handleEdit(createdAt)} className="small-btn btn-edit"><Icon.Pencil /></span>
-                    <span onClick={ () => handleDelete(createdAt)} className="small-btn btn-delete"><Icon.Trash3 /></span>
+                    <span onClick={ () => handleEdit()} className="small-btn btn-edit"><Icon.Pencil /></span>
+                    <span onClick={ () => handleDelete()} className="small-btn btn-delete"><Icon.Trash3 /></span>
                 </Card.Body>
             </Card>
+
+            {
+                show ?
+                <UpdateNote
+                    visibility  = {show}
+                    handleShow  = {setShow}
+                    oldData     = {oldData}
+                />
+                :""
+            }
+
         </div>
     )
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeNote      : (data) => dispatch(removeNote(data)),
-        updateNote      : (data) => dispatch(updateNote(data))
+        removeNote : (data) => dispatch(removeNote(data))
     }
 }
 
